@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-export default function Navbar() {
+export default function Header() {
   const pathname = usePathname();
   const isSelected = (path: string) => {
     return pathname === path ? "text-blue-500" : "text-gray-500";
