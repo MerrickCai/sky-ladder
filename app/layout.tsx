@@ -31,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Header, Main, and Footer */}
         <div className="flex flex-col min-h-screen w-screen">
           <Header />
           <main className="w-screen flex-grow flex justify-center items-center overflow-hidden h-auto">
@@ -39,6 +40,7 @@ export default function RootLayout({
           <Footer />
         </div>
 
+        {/* Speed Insights and Analytics */}
         <SpeedInsights />
         <Analytics />
       </body>
