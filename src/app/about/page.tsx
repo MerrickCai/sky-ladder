@@ -1,6 +1,4 @@
-"use client";
-
-export default function About() {
+export default async function About() {
   return (
     <div className="flex flex-col h-auto flex-grow items-center justify-center px-4">
       <h2 className="text-2xl font-semibold text-gray-700">🛠 Tech Stack</h2>

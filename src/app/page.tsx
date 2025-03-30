@@ -1,6 +1,4 @@
-"use client";
-
-export default function Home() {
+export default async function Home() {
   return (
     <div className="flex flex-col h-auto flex-grow items-center justify-center px-4">
       <h1 className="text-4xl font-bold mb-4">Welcome to My Blog</h1>
