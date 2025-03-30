@@ -3,13 +3,17 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function NavItem({
-  link,
-}: {
-  link: { href: string; label: string };
-}) {
+type NavItemProps = {
+  href: string;
+  label: string;
+  icon?: React.ReactNode;
+};
+
+export default function NavItem({ link }: { link: NavItemProps }) {
   const pathname = usePathname();
 
+  // Use startsWith() if you want to highlight parent routes as well
+  // const isActive = pathname.startsWith(link.href);
   const isActive = pathname === link.href;
 
   const commonClassName =
@@ -21,7 +25,9 @@ export default function NavItem({
       className={`${
         isActive ? "text-blue-500" : "text-gray-500"
       } ${commonClassName}`}
+      aria-current={isActive ? "page" : undefined}
     >
+      {link.icon}
       {link.label}
     </Link>
   );
