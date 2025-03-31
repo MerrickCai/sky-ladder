@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
         {/* Header, Main, and Footer */}
-        <div className="flex flex-col min-h-screen w-full">
+        <div className="flex flex-col min-h-screen w-full bg-white dark:bg-black">
           <Header />
           <main className="w-full flex-grow flex flex-col justify-center items-center overflow-hidden h-auto">
             {children}

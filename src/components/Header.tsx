@@ -1,5 +1,6 @@
-import NavItem from "@/ui/NavItem";
 import { navLinks } from "@/config/navLinks";
+import NavItem from "@/ui/NavItem";
+import ThemeToggle from "@/ui/ThemeToggle";
 
 export default async function Header() {
   return (
@@ -8,6 +9,7 @@ export default async function Header() {
         {navLinks.map((link) => (
           <NavItem key={link.href} link={link} />
         ))}
+        <ThemeToggle />
       </nav>
     </header>
   );
