@@ -25,7 +25,9 @@ export default function NavItem({ link }: { link: NavItemProps }) {
   return (
     <Link
       href={link.href}
-      className={`${isActive ? "text-blue-500" : "text-gray-500"} ${commonClassName}`}
+      className={`${
+        isActive ? "text-blue-500 dark:text-blue-500" : "text-gray-500 dark:text-gray-200"
+      } ${commonClassName}`}
       aria-current={isActive ? "page" : undefined}
     >
       <Icon className={`size-5 hover:text-blue-500 ${isActive ? "text-blue-500" : ""}`} />
