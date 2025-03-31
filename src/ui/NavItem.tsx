@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { navIcons } from "@/config/navLinks";
 
 type NavItemProps = {
   href: string;
   label: string;
-  icon?: React.ReactNode;
+  icon: string;
 };
 
 export default function NavItem({ link }: { link: NavItemProps }) {
@@ -17,17 +18,17 @@ export default function NavItem({ link }: { link: NavItemProps }) {
   const isActive = pathname === link.href;
 
   const commonClassName =
-    "text-lg hover:text-blue-500 p-2 rounded-lg transition-all duration-500 w-20";
+    "flex flex-row gap-2 justify-center items-center text-lg hover:text-blue-500 p-2 rounded-lg transition-all duration-500 w-auto";
+
+  const Icon = navIcons.get(link.icon) as React.ElementType;
 
   return (
     <Link
       href={link.href}
-      className={`${
-        isActive ? "text-blue-500" : "text-gray-500"
-      } ${commonClassName}`}
+      className={`${isActive ? "text-blue-500" : "text-gray-500"} ${commonClassName}`}
       aria-current={isActive ? "page" : undefined}
     >
-      {link.icon}
+      <Icon className={`size-5 hover:text-blue-500 ${isActive ? "text-blue-500" : ""}`} />
       {link.label}
     </Link>
   );
