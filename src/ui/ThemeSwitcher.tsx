@@ -16,7 +16,7 @@ export default function ThemeSwitcher() {
   const removeTheme = () => {
     setTheme("system");
     localStorage.removeItem("theme");
-    document.documentElement.classList.remove("dark");
+    themeScript();
   };
 
   const themeScript = () => {
