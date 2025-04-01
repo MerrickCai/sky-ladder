@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const commonClassNames = "cursor-pointer px-2 py-1 text-sm transition-colors rounded";
+const commonClassNames = "cursor-pointer w-9 h-9 text-center text-sm transition-colors rounded";
 const activeClassNames = "bg-gray-900 text-white dark:bg-white dark:text-black";
 const notActiveClassNames =
   "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700";
@@ -34,14 +34,16 @@ export default function ThemeSwitcher() {
 
   useEffect(() => {
     const storedTheme = (localStorage.getItem("theme") as Theme) || "system";
-    setTheme(storedTheme);
     setHasMounted(true);
+    setTheme(storedTheme);
   }, []);
 
-  if (!hasMounted) return null;
+  if (!hasMounted) return <div className="w-27 h-9 rounded border border-transparent"></div>;
 
   return (
-    <div className="flex flex-row rounded overflow-hidden border border-gray-300 dark:border-gray-600">
+    <div
+      className={`animate-fadeIn w-27 h-9 flex flex-row rounded overflow-hidden border border-gray-300 dark:border-gray-600`}
+    >
       <button
         onClick={() => {
           applyTheme("light");
