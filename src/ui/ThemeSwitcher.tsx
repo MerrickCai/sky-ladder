@@ -1,9 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+
+const commonClassNames = "cursor-pointer px-2 py-1 text-sm transition-colors rounded";
+const activeClassNames = "bg-gray-900 text-white dark:bg-white dark:text-black";
+const notActiveClassNames =
+  "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700";
 
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState<string>("");
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") || "system";
@@ -13,10 +18,21 @@ export default function ThemeSwitcher() {
   function applyTheme(theme: string) {
     setTheme(theme);
     localStorage.setItem("theme", theme);
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = theme === "dark" || ((theme === "system" || theme === null) && prefersDark);
-    document.documentElement.classList.toggle("dark", isDark);
+    themeScript();
   }
+
+  const removeTheme = useCallback(() => {
+    setTheme("system");
+    localStorage.removeItem("theme");
+    document.documentElement.classList.remove("dark");
+  }, []);
+
+  const themeScript = useCallback(() => {
+    const theme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = theme === "dark" || (theme === null && prefersDark);
+    document.documentElement.classList.toggle("dark", isDark);
+  }, []);
 
   return (
     <div className="flex flex-row rounded overflow-hidden border border-gray-300 dark:border-gray-600">
@@ -24,37 +40,29 @@ export default function ThemeSwitcher() {
         onClick={() => {
           applyTheme("light");
         }}
-        className={`cursor-pointer px-2 py-1 text-sm transition-colors rounded ${
-          theme === "light"
-            ? "bg-gray-900 text-white dark:bg-white dark:text-black"
-            : "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+        className={`${commonClassNames} ${
+          theme === "light" ? activeClassNames : notActiveClassNames
         } `}
       >
-        🌞Light
+        🌞
       </button>
       <button
         onClick={() => {
           applyTheme("dark");
         }}
-        className={`cursor-pointer px-2 py-1 text-sm transition-colors rounded ${
-          theme === "dark"
-            ? "bg-gray-900 text-white dark:bg-white dark:text-black"
-            : "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+        className={`${commonClassNames} ${
+          theme === "dark" ? activeClassNames : notActiveClassNames
         } `}
       >
-        🌙Dark
+        🌙
       </button>
       <button
-        onClick={() => {
-          applyTheme("system");
-        }}
-        className={`cursor-pointer px-2 py-1 text-sm transition-colors rounded ${
-          theme === "system"
-            ? "bg-gray-900 text-white dark:bg-white dark:text-black"
-            : "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+        onClick={removeTheme}
+        className={`${commonClassNames} ${
+          theme === "system" ? activeClassNames : notActiveClassNames
         } `}
       >
-        🖥️System
+        🖥️
       </button>
     </div>
   );
