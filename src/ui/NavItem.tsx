@@ -30,7 +30,7 @@ export default function NavItem({ link }: { link: NavItemProps }) {
       } ${commonClassName}`}
       aria-current={isActive ? "page" : undefined}
     >
-      <Icon className={`size-5 hover:text-blue-500 ${isActive ? "text-blue-500" : ""}`} />
+      <Icon className={`w-5 h-5 hover:text-blue-500 ${isActive ? "text-blue-500" : ""}`} />
       {link.label}
     </Link>
   );
