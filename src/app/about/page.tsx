@@ -1,6 +1,6 @@
 export default async function About() {
   return (
-    <div className="flex flex-col h-auto w-full flex-grow items-center justify-center px-4 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
+    <div className="flex flex-col h-auto w-full flex-grow items-center justify-center px-4 py-4 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700">
       <h2 className="text-5xl font-extrabold text-gray-800 dark:text-gray-100 mb-8 text-center">
         About Me
       </h2>

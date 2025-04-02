@@ -18,7 +18,7 @@ export default function NavItem({ link }: { link: NavItemProps }) {
   const isActive = pathname === link.href;
 
   const commonClassName =
-    "flex flex-row gap-2 justify-center items-center text-lg hover:text-blue-500 p-2 rounded-lg transition-all duration-500 w-auto";
+    "flex flex-row gap-1.5 md:gap-2 justify-center items-center text-sm md:text-lg hover:text-blue-500 p-0.5 md:p-2 rounded-lg transition-all duration-500 w-auto";
 
   const Icon = navIcons.get(link.icon) as React.ElementType;
 
@@ -30,7 +30,9 @@ export default function NavItem({ link }: { link: NavItemProps }) {
       } ${commonClassName}`}
       aria-current={isActive ? "page" : undefined}
     >
-      <Icon className={`w-5 h-5 hover:text-blue-500 ${isActive ? "text-blue-500" : ""}`} />
+      <Icon
+        className={`w-4 h-4 md:w-5 md:h-5 hover:text-blue-500 ${isActive ? "text-blue-500" : ""}`}
+      />
       {link.label}
     </Link>
   );

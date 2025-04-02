@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 
-const commonClassNames = "cursor-pointer w-9 h-9 text-center text-sm transition-colors rounded";
+const commonClassNames =
+  "cursor-pointer w-7 h-8 md:w-9 md:h-9 text-center text-sm transition-colors rounded";
 const activeClassNames = "bg-gray-900 text-white dark:bg-white dark:text-black";
 const notActiveClassNames =
   "bg-white text-gray-800 dark:bg-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700";
@@ -16,7 +17,7 @@ export default function ThemeSwitcher() {
   const removeTheme = () => {
     setTheme("system");
     localStorage.removeItem("theme");
-    document.documentElement.classList.remove("dark");
+    themeScript();
   };
 
   const themeScript = () => {
@@ -38,11 +39,12 @@ export default function ThemeSwitcher() {
     setTheme(storedTheme);
   }, []);
 
-  if (!hasMounted) return <div className="w-27 h-9 rounded border border-transparent"></div>;
+  if (!hasMounted)
+    return <div className="w-21 md:w-27 h-8 md:h-9 rounded border border-transparent"></div>;
 
   return (
     <div
-      className={`animate-fadeIn w-27 h-9 flex flex-row rounded overflow-hidden border border-gray-300 dark:border-gray-600`}
+      className={`animate-fadeIn w-21 md:w-27 h-8 md:h-9 flex flex-row rounded overflow-hidden border border-gray-300 dark:border-gray-600`}
     >
       <button
         onClick={() => {
