@@ -48,6 +48,17 @@ export default async function Home() {
             View Notes on Notion
           </Link>
         </section>
+        <section className="p-8 border rounded-xl shadow-lg bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+          <h2 className="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+            Upcoming Features
+          </h2>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Exciting updates are on the way! The site will soon be connected to a backend database
+            hosted on Vercel, enabling dynamic content and enhanced functionality. Additionally,
+            support for Markdown and MDX will be introduced, leveraging Next.js's official
+            integration to create rich, flexible content.
+          </p>
+        </section>
       </div>
     </div>
   );
